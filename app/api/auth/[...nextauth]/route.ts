@@ -1,8 +1,7 @@
+import { userCredential } from "@/constants/userCredential";
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
-const EMAIL = "manish@gmail.com";
-const Password = "Manish@1234"
 
 const handler = NextAuth({
   providers: [
@@ -15,13 +14,13 @@ const handler = NextAuth({
       async authorize(credentials) {
         // ✅ Dummy auth
         if (
-          credentials?.email === EMAIL &&
-          credentials?.password === Password
+          credentials?.email === userCredential.email &&
+          credentials?.password === userCredential.password
         ) {
           return {
-            id: "1",
-            name: "Manish",
-            email: EMAIL,
+            id: userCredential.id,
+            name: userCredential.name,
+            email: userCredential.email,
           };
         }
 

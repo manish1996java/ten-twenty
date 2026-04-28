@@ -1,5 +1,7 @@
+import { userCredential } from "@/constants/userCredential";
+
 export const users = [
-    { id: 1, email: "test@test.com", password: "123456" },
+    { id: 1, email: userCredential.email, password: userCredential.password },
 ];
 
 export const timesheets = [
