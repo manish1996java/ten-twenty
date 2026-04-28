@@ -13,15 +13,14 @@ const LoginForm = () => {
         const res = await signIn("credentials", {
             email,
             password,
-            callbackUrl: "/dashboard",
-            // redirect: false,
+            redirect: false,
         });
 
-        console.log("res-->", res);
+        console.log("res-->", res); 
 
         if (!res?.error) {
             console.log("if con");
-            // router.push("/dashboard"); // ✅ redirect
+            router.push("/dashboard"); // ✅ redirect
         } else {
             console.log("else");
             alert("Invalid credentials");
