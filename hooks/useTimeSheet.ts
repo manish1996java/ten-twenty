@@ -13,7 +13,7 @@ export function useTimeSheets<T>() {
   useEffect(() => {
     async function fetchData() {
       const res = await fetch(
-        `/api/timesheets?page=${page}&limit=${perPage}&sort=${sortKey}&order=${order}`
+        `${process.env.NEXT_PUBLIC_API_URL}/api/timesheets?page=${page}&limit=${perPage}&sort=${sortKey}&order=${order}`
       );
 
       const result = await res.json();

@@ -34,7 +34,7 @@ export async function getTimesheets({
 
 
 export async function getTimesheetById(id: number) {
-  const res = await fetch(`/api/timesheets/${id}`);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/timesheets/${id}`);
   if (!res.ok) throw new Error("Failed");
   return res.json();
 }
