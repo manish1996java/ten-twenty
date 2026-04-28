@@ -19,7 +19,7 @@ const Pagination: FC<PaginationProps> = ({ perPageList = [5], page, totalPages, 
 
     const pages = getPageNumbers(page, totalPages);
     return (
-        <div className="flex items-center justify-between mt-4 text-sm text-gray-500">
+        <div className="block sm:flex items-center justify-between mt-4 text-sm text-gray-500">
 
             <select
                 value={perPage}
@@ -30,7 +30,7 @@ const Pagination: FC<PaginationProps> = ({ perPageList = [5], page, totalPages, 
                 })}
             </select>
 
-            <div className="flex items-center gap-1">
+            <div className="flex items-center gap-1 mt-2 sm:mt-0">
 
                 {/* Previous */}
                 <button
