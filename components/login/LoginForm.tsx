@@ -19,8 +19,10 @@ const LoginForm = () => {
         console.log("res-->", res);
 
         if (!res?.error) {
+            console.log("if con");
             router.push("/dashboard"); // ✅ redirect
         } else {
+            console.log("else");
             alert("Invalid credentials");
         }
     };
