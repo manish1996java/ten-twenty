@@ -21,9 +21,11 @@ export async function getTimesheets({
   sort: string;
   order: "asc" | "desc";
 }) {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/timesheets?page=${page}&limit=${limit}&sort=${sort}&order=${order}`
-  );
+
+  console.log("get Timesheets");
+  const url = `/api/timesheets?page=${page}&limit=${limit}&sort=${sort}&order=${order}`
+  console.log("url",url);
+  const res = await fetch(url);
 
   if (!res.ok) {
     throw new Error("Failed to fetch timesheets");
@@ -34,7 +36,7 @@ export async function getTimesheets({
 
 
 export async function getTimesheetById(id: number) {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/timesheets/${id}`);
+  const res = await fetch(`/api/timesheets/${id}`);
   if (!res.ok) throw new Error("Failed");
   return res.json();
 }

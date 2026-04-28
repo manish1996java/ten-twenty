@@ -1,4 +1,5 @@
 
+import { getTimesheets } from "@/lib/api/timesheet";
 import { useEffect, useState } from "react";
 
 export function useTimeSheets<T>() {
@@ -10,12 +11,16 @@ export function useTimeSheets<T>() {
   const [sortKey, setSortKey] = useState("week");
   const [order, setOrder] = useState<"asc" | "desc">("asc");
 
+  console.log("useTimesheets")
+
   useEffect(() => {
     async function fetchData() {
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/timesheets?page=${page}&limit=${perPage}&sort=${sortKey}&order=${order}`
-      );
-
+      // const res = await fetch(
+      //   `${process.env.NEXT_PUBLIC_API_URL}/api/timesheets?page=${page}&limit=${perPage}&sort=${sortKey}&order=${order}`
+      // );
+      console.log("before fetch");
+      const res = await getTimesheets({page, limit:perPage, sort:sortKey,order})
+      console.log("ress---->", res)
       const result = await res.json();
 
       setData(result.data);
