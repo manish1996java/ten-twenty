@@ -45,14 +45,11 @@ const TimesheetDetailPage = () => {
 
   if (!timesheet) return null;
 
-  const tasksByDay = ()=>{
-    if (!timesheet) return {} as TasksByDay;
-    return timesheet.tasks.reduce((acc: TasksByDay, task: Task) => {
+  const tasksByDay = timesheet.tasks.reduce((acc: TasksByDay, task: Task) => {
       if (!acc[task.day]) acc[task.day] = [];
       acc[task.day].push(task);
       return acc;
     }, {} as TasksByDay);
-  }
 
   
 

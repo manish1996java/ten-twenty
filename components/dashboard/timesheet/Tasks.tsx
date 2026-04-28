@@ -47,4 +47,6 @@ const Tasks: FC<{tasksByDay: TasksByDay, setShowModal: (val: boolean) => void }>
     )
 }
 
+Tasks.displayName = "Tasks"; 
+
 export default memo(Tasks);
