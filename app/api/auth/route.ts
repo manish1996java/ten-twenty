@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { users } from "@/lib/mockData";
+import { users } from "@/lib/mockdata";
 
 export async function POST(req: Request) {
   const body = await req.json();

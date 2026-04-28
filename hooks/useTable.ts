@@ -3,7 +3,7 @@
 import { useState, useMemo } from "react";
 import { sortData, paginate } from "@/lib/table";
 
-export function useTable<T>(data: T[], initialPerPage = 5) {
+export const useTable = <T>(data: T[], initialPerPage = 5) => {
   const [page, setPage] = useState(1);
   const [perPage, setPerPage] = useState(initialPerPage);
 

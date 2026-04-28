@@ -1,16 +1,6 @@
-// export async function getTimesheets({
-//   page,
-//   limit,
-// }: {
-//   page: number;
-//   limit: number;
-// }) {
-//   const res = await fetch(
-//     `/api/timesheets?page=${page}&limit=${limit}`
-//   );
-//   return res.json();
-// }
-export async function getTimesheets({
+import { PaginatedResponse, TimesheetListItem } from "@/types";
+
+export const getTimesheets =  async ({
   page,
   limit,
   sort,
@@ -20,11 +10,9 @@ export async function getTimesheets({
   limit: number;
   sort: string;
   order: "asc" | "desc";
-}) {
+}): Promise<PaginatedResponse<TimesheetListItem>>  => {
 
-  console.log("get Timesheets");
   const url = `/api/timesheets?page=${page}&limit=${limit}&sort=${sort}&order=${order}`
-  console.log("url",url);
   const res = await fetch(url);
 
   if (!res.ok) {
@@ -35,7 +23,7 @@ export async function getTimesheets({
 }
 
 
-export async function getTimesheetById(id: number) {
+export const getTimesheetById = async (id: number) => {
   const res = await fetch(`/api/timesheets/${id}`);
   if (!res.ok) throw new Error("Failed");
   return res.json();

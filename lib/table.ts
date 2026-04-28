@@ -1,8 +1,8 @@
-export function paginate<T>(
+export const paginate = <T>(
   data: T[],
   page: number,
   perPage: number
-) {
+) => {
   const start = (page - 1) * perPage;
   const end = start + perPage;
 
@@ -12,10 +12,10 @@ export function paginate<T>(
   };
 }
 
-export function sortData<T>(
+export const sortData = <T>(
   data: T[],
   config: { key: keyof T; direction: "asc" | "desc" }
-): T[] {
+): T[] => {
   const { key, direction } = config;
 
   return [...data].sort((a, b) => {

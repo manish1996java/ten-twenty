@@ -1,37 +1,8 @@
-// import {  NextResponse } from "next/server";
-// import { timesheets } from "@/lib/mockData";
-
-// // export async function GET(req: Request,{params}:{params:{range, status:string}}) {
-    
-
-// //   return NextResponse.json(timesheets);
-// // }
-
-// export async function GET(req: Request) {
-//   const { searchParams } = new URL(req.url);
-
-//   const page = Number(searchParams.get("page") || 1);
-//   const limit = Number(searchParams.get("limit") || 5);
-
-//   const start = (page - 1) * limit;
-//   const end = start + limit;
-
-//   const sliced = timesheets.slice(start, end);
-
-//   return Response.json({
-//     data: sliced,
-//     total: timesheets.length,
-//   });
-// }
-
 import { NextResponse } from "next/server";
-import { timesheets } from "@/lib/mockData";
+import { timesheets } from "@/lib/mockdata";
 
 export async function GET(req: Request) {
-    console.log("tiimesheet route");
   const { searchParams } = new URL(req.url);
-
-  console.log("timesheet route", searchParams)
 
   const page = Number(searchParams.get("page") || 1);
   const limit = Number(searchParams.get("limit") || 5);

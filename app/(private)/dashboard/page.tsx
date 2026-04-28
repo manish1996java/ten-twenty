@@ -1,14 +1,9 @@
 'use client';
 
 import Filters from "@/components/dashboard/Filters";
-import Pagination from "@/components/dashboard/Pagination";
 import TimesheetTable from "@/components/dashboard/TimeSheetTable";
-import { getTimesheets } from "@/lib/api/timesheet";
-import { useEffect, useState } from "react";
 
-
-export default function DashboardPage() {
-
+const DashboardPage =() => {
 
   return (
     <div className="p-6">
@@ -32,3 +27,6 @@ export default function DashboardPage() {
     </div>
   );
 }
+
+
+export default DashboardPage;

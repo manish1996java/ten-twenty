@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { redirect } from "next/navigation";
 
-export default function Home() {
+const Home = () => {
    redirect("/login");
 
   return (
@@ -66,3 +66,6 @@ export default function Home() {
     </div>
   );
 }
+
+
+export default Home;

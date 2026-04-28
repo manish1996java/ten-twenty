@@ -1,9 +1,10 @@
 
 import { getTimesheets } from "@/lib/api/timesheet";
-import { useEffect, useState } from "react";
+import { TimesheetListItem } from "@/types";
+import { useCallback, useEffect, useState } from "react";
 
-export function useTimeSheets<T>() {
-  const [data, setData] = useState<T[]>([]);
+export const useTimeSheets = () => {
+  const [data, setData] = useState<TimesheetListItem[]|[]>([]);
   const [page, setPage] = useState(1);
   const [perPage, setPerPage] = useState(5);
   const [totalPages, setTotalPages] = useState(1);
@@ -11,17 +12,13 @@ export function useTimeSheets<T>() {
   const [sortKey, setSortKey] = useState("week");
   const [order, setOrder] = useState<"asc" | "desc">("asc");
 
-  console.log("useTimesheets")
+
 
   useEffect(() => {
     async function fetchData() {
-      // const res = await fetch(
-      //   `${process.env.NEXT_PUBLIC_API_URL}/api/timesheets?page=${page}&limit=${perPage}&sort=${sortKey}&order=${order}`
-      // );
-      console.log("before fetch");
+
       const res = await getTimesheets({page, limit:perPage, sort:sortKey,order})
-      console.log("ress---->", res)
-      const result = await res.json();
+      const result = await res;
 
       setData(result.data);
       setTotalPages(Math.ceil(result.total / perPage));
@@ -31,7 +28,7 @@ export function useTimeSheets<T>() {
   }, [page, perPage, sortKey, order]);
 
 
-  const handleSort = (key: string) => {
+  const handleSort = useCallback((key: string) => {
   setPage(1);
 
   if (sortKey === key) {
@@ -40,7 +37,7 @@ export function useTimeSheets<T>() {
     setSortKey(key);
     setOrder("asc");
   }
-};
+},[sortKey]);
 
   return {
     data,

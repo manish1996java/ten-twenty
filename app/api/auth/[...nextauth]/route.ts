@@ -12,9 +12,6 @@ const handler = NextAuth({
         password: {},
       },
       async authorize(credentials) {
-        // ✅ Dummy auth
-        console.log("credentials", credentials);
-        console.log("userCredential", userCredential);
 
         if (
           credentials?.email === userCredential.email &&

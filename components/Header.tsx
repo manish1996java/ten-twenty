@@ -1,12 +1,10 @@
 "use client";
 
-import { ChevronDown, ChevronUp } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { signOut } from "next-auth/react";
-import { useState } from "react";
 
-export default function Header() {
+const Header = () => {
 
-    const [open, setOpen] = useState(false);
 
     return (
         <header className="w-full border-b bg-white">
@@ -26,26 +24,6 @@ export default function Header() {
                     </nav>
                 </div>
 
-                {/* <div onClick={() => setOpen((prev) => !prev)} className="flex items-center gap-2 cursor-pointer text-sm text-gray-700 hover:text-black">
-                    <span>John Doe</span>
-                    {open ? (<ChevronDown size={16} />) : (<ChevronUp size={16} />)}
-                </div>
-
-
-
-                {open && (
-                    <div className="absolute right-0 top-[50px] mt-2 w-48 bg-white border rounded-xl shadow-lg p-2 animate-in fade-in zoom-in-95">
-
-
-                        <button
-                            onClick={() => signOut({ callbackUrl: "/login" })}
-                            className="w-full mt-2 px-3 py-2 text-sm font-medium text-red-600 rounded-md hover:bg-red-50 transition"
-                        >
-                            Logout
-                        </button>
-
-                    </div>
-                )} */}
 
                 <div className="relative group">
 
@@ -73,3 +51,5 @@ export default function Header() {
         </header>
     );
 }
+
+export default Header;

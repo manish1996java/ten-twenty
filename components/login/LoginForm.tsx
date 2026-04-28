@@ -1,9 +1,7 @@
-import { loginValidationSchema } from '@/lib/validations/login';
+import { loginValidationSchema } from '@/lib/validations/loginValidationSchema';
 import { Form, Formik } from 'formik';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
-
-import React, { useState } from 'react'
 
 const LoginForm = () => {
     const router = useRouter();
@@ -16,13 +14,11 @@ const LoginForm = () => {
             redirect: false,
         });
 
-        console.log("res-->", res); 
 
         if (!res?.error) {
-            console.log("if con");
             router.push("/dashboard"); // ✅ redirect
         } else {
-            console.log("else");
+
             alert("Invalid credentials");
         }
     };
@@ -39,12 +35,11 @@ const LoginForm = () => {
                     }}
                     validationSchema={loginValidationSchema}
                     onSubmit={(values) => {
-                        console.log(values);
                         const { email, password } = values;
-                        handleLogin(email, password);
+                        handleLogin(email,password);
                     }}
                 >
-                    {({ isSubmitting, handleSubmit, handleBlur, handleChange, touched, errors }) => (
+                    {({  handleSubmit, handleBlur, handleChange, touched, errors }) => (
                         <Form onSubmit={handleSubmit}>
 
                             <h2 className="text-2xl font-semibold text-gray-800 mb-6">

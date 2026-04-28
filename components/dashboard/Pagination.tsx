@@ -1,6 +1,7 @@
 'use client';
 
-import { FC } from "react";
+import { getPageNumbers } from "@/lib/pagination";
+import { FC, memo } from "react";
 
 
 
@@ -13,14 +14,6 @@ interface PaginationProps {
     setPerPage: (size: number) => void;
 };
 
-
-function getPageNumbers(current: number, total: number): (number | '...')[] {
-    if (total <= 7) return Array.from({ length: total }, (_, i) => i + 1);
-
-    if (current <= 4) return [1, 2, 3, 4, 5, '...', total];
-    if (current >= total - 3) return [1, '...', total - 4, total - 3, total - 2, total - 1, total];
-    return [1, '...', current - 1, current, current + 1, '...', total];
-}
 
 const Pagination: FC<PaginationProps> = ({ perPageList = [5], page, totalPages, perPage, setPage, setPerPage }) => {
 
@@ -36,15 +29,6 @@ const Pagination: FC<PaginationProps> = ({ perPageList = [5], page, totalPages, 
                     return (<option value={value} key={value}>{value} per page</option>)
                 })}
             </select>
-
-            {/* <div className="flex items-center gap-2">
-                <button>Previous</button>
-                <button className="px-2 py-1 bg-gray-200 rounded">1</button>
-                <button className="px-2 py-1">2</button>
-                <button className="px-2 py-1 text-blue-600">3</button>
-                <button className="px-2 py-1">4</button>
-                <button className="px-2 py-1">Next</button>
-            </div> */}
 
             <div className="flex items-center gap-1">
 
@@ -94,4 +78,4 @@ const Pagination: FC<PaginationProps> = ({ perPageList = [5], page, totalPages, 
     );
 }
 
-export default Pagination;
+export default memo(Pagination);
