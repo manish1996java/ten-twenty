@@ -136,7 +136,8 @@ ten-twenty/
 | Middleware & route protection | 30 mins |
 | Deployment & Vercel configuration | 1 hr |
 | Bug fixes & debugging | 1 hr |
-| **Total** | **~8 hrs** |
+| Additional work (28 April – started 10 AM) | 2 hrs* |
+| **Total** | **~10 hrs*** |
 
 ---
 
