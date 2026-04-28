@@ -22,7 +22,7 @@ export async function getTimesheets({
   order: "asc" | "desc";
 }) {
   const res = await fetch(
-    `/api/timesheets?page=${page}&limit=${limit}&sort=${sort}&order=${order}`
+    `${process.env.NEXT_PUBLIC_API_URL}/api/timesheets?page=${page}&limit=${limit}&sort=${sort}&order=${order}`
   );
 
   if (!res.ok) {

@@ -28,7 +28,10 @@ import { NextResponse } from "next/server";
 import { timesheets } from "@/lib/mockData";
 
 export async function GET(req: Request) {
+    console.log("tiimesheet route");
   const { searchParams } = new URL(req.url);
+
+  console.log("timesheet route", searchParams)
 
   const page = Number(searchParams.get("page") || 1);
   const limit = Number(searchParams.get("limit") || 5);
